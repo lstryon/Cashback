@@ -44,14 +44,14 @@ WS_Count = ActiveWorkbook.Worksheets.Count
  For I = 1 To WS_Count + 1
  
     Sheets(I).Select
-    Range("C9:C30").Select
+    Range("C9:C65").Select
     Selection.Copy
     Sheets("Planilha1").Select
     ' cola na próxima em vazio
     Cells(Rows.Count, "A").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
     
     Sheets(I).Select
-    Range("H9:H30").Select
+    Range("H9:H65").Select
     Application.CutCopyMode = False
     Selection.Copy
     Sheets("Planilha1").Select
@@ -68,10 +68,10 @@ WS_Count = ActiveWorkbook.Worksheets.Count
     Columns("A:A").Select
     ActiveWorkbook.Worksheets("Planilha1").Sort.SortFields.Clear
     ActiveWorkbook.Worksheets("Planilha1").Sort.SortFields.Add2 Key:=Range( _
-        "A1:A300"), SortOn:=xlSortOnValues, Order:=xlDescending, DataOption:= _
+        "A1:A400"), SortOn:=xlSortOnValues, Order:=xlDescending, DataOption:= _
         xlSortNormal
     With ActiveWorkbook.Worksheets("Planilha1").Sort
-        .SetRange Range("A2:C300")
+        .SetRange Range("A2:C400")
         .Header = xlNo
         .MatchCase = False
         .Orientation = xlTopToBottom

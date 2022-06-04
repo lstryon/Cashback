@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!-- Designined by Luis-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Cashback | VBA Project </title>
+    <link rel="stylesheet" href="style.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="text-boxes-1">
+    <div class="topic-3">Cashback | VBA Project by LC</div>
+    <div class="topic-2">Instruções:</div>
+    <div class="topic-1">Copiar o código VBA</div>
+    <div class="topic-1">Abrir Excel</div>
+    <div class="topic-1">Alt + F11</div>
+    <div class="topic-1">Inserir Modulo</div>
+    <div class="topic-1">Colar código VBA</div>
+    <div class="topic-1">Executar código - F5</div>
+  </div>
+
+  <div class="text-boxes">
+    <div class="text-box HTMLBox">
+      <div class="topic">Código VBA:</div>
+      <textarea id="HTMLBox" readonly >
+Sub cashback()
+
+Dim WS_Count As Integer
+Dim I As Integer
+
+'WS_Count conta o numero de Planilhas
+WS_Count = ActiveWorkbook.Worksheets.Count
+
+' Criando aba nova
+
+    Sheets.Add
+    ActiveCell.FormulaR1C1 = "EAN"
+    Range("B1").Select
+    ActiveCell.FormulaR1C1 = "PREÇO"
+    Range("A2").Select
+
+' Começo do loop aba a aba
+ 
+ For I = 1 To WS_Count + 1
+ 
+    Sheets(I).Select
+    Range("C9:C30").Select
+    Selection.Copy
+    Sheets("Planilha1").Select
+    ' cola na próxima em vazio
+    Cells(Rows.Count, "A").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+    
+    Sheets(I).Select
+    Range("H9:H30").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Planilha1").Select
+    ' cola na próxima em vazio
+    Cells(Rows.Count, "B").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+    
+  Next I
+  
+' Final do loop
+
+
+' Classificar na aba nova
+
+    Columns("A:A").Select
+    ActiveWorkbook.Worksheets("Planilha1").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("Planilha1").Sort.SortFields.Add2 Key:=Range( _
+        "A1:A300"), SortOn:=xlSortOnValues, Order:=xlDescending, DataOption:= _
+        xlSortNormal
+    With ActiveWorkbook.Worksheets("Planilha1").Sort
+        .SetRange Range("A2:C300")
+        .Header = xlNo
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    Cells.Select
+    Cells.EntireColumn.AutoFit
+    Cells(2, 4).Select
+    Cells(2, 4).Value = "Processo Finalizado"
+    Columns("d:d").EntireColumn.AutoFit
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorAccent6
+        .TintAndShade = 0.399975585192419
+        .PatternTintAndShade = 0
+    End With
+    
+    Range("D2:E2").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("D3").Select
+    ActiveCell.FormulaR1C1 = "Qnt EAN"
+    Range("E3").Select
+    ActiveCell.FormulaR1C1 = "=COUNTA(R[-1]C[-4]:R[297]C[-4])"
+    Range("D3:E3").Select
+    Range("E3").Activate
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Range("D2:E2").Select
+    
+    Range("A:A,B:B").Select
+    Range("B1").Activate
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideVertical)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideHorizontal)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    With Selection.Interior
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark2
+        .TintAndShade = -9.99786370433668E-02
+        .PatternTintAndShade = 0
+    End With
+    Range("D2:E2").Select
+
+' Final classificar
+
+End Sub
+      </textarea>
+      <button id="HTMLButton">Copiar Código</button>
+    </div>
+  </div>
+
+  <script>
+  // HTML BOx Code
+    let HTMLBox = document.getElementById("HTMLBox");
+    let HTMLButton = document.getElementById("HTMLButton");
+
+    HTMLButton.onclick = function() {
+      HTMLBox.select();
+      document.execCommand("copy");
+      HTMLButton.innerText = "Código Copiado"
+    }
+  </script>
+
+
+</body>
+</html>

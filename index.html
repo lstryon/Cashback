@@ -34,7 +34,7 @@ WS_Count = ActiveWorkbook.Worksheets.Count
 ' Criando aba nova
 
     Sheets.Add
-    ActiveCell.FormulaR1C1 = "EAN"
+    ActiveCell.FormulaR1C1 = "CÓD. REDUZIDO"
     Range("B1").Select
     ActiveCell.FormulaR1C1 = "PREÇO"
     Range("A2").Select
@@ -105,7 +105,7 @@ WS_Count = ActiveWorkbook.Worksheets.Count
     End With
     Selection.Merge
     Range("D3").Select
-    ActiveCell.FormulaR1C1 = "Qnt EAN"
+    ActiveCell.FormulaR1C1 = "Qnt CÓD. REDUZIDO"
     Range("E3").Select
     ActiveCell.FormulaR1C1 = "=COUNTA(R[-1]C[-4]:R[297]C[-4])"
     Range("D3:E3").Select

@@ -21,8 +21,270 @@
 
   <div class="text-boxes">
     <div class="text-box HTMLBox">
-      <div class="topic">Código VBA:</div>
+      <div class="topic">Código VBA - Importação Excel:</div>
       <textarea id="HTMLBox" readonly >
+Dim valor As String
+Dim cell, range1 As Range
+        
+Sub completar()
+        
+  Set range1 = Range("b9:b108")
+        
+    For Each cell In range1
+        
+      If cell.Value <> "" Then
+                valor = Range("b6").Value
+                cell.Offset(0, 8).Value = valor
+                valor = Range("c6").Value
+                cell.Offset(0, 9).Value = valor
+                valor = Range("d6").Value
+                cell.Offset(0, 10).Value = valor
+                valor = Range("e6").Value
+                cell.Offset(0, 11).Value = valor
+                valor = Range("g6").Value
+                cell.Offset(0, 12).Value = valor
+                valor = Range("h6").Value
+                cell.Offset(0, 13).Value = valor
+      Else
+                cell.Offset(0, 8).Value = ""
+                cell.Offset(0, 9).Value = ""
+                cell.Offset(0, 10).Value = ""
+                cell.Offset(0, 11).Value = ""
+                cell.Offset(0, 12).Value = ""
+                cell.Offset(0, 13).Value = ""
+      End If
+        
+    Next
+
+End Sub
+        
+Sub cashbackImportacao()
+        
+Dim WS_Count As Integer
+Dim I, X As Integer
+        
+'WS_Count conta o numero de Planilhas
+WS_Count = ActiveWorkbook.Worksheets.Count
+        
+    For X = 1 To WS_Count
+        
+        Sheets(X).Select
+        Call completar
+        
+    Next X
+        
+'Criando aba nova
+        
+      Sheets.Add
+            ActiveCell.FormulaR1C1 = "codigo"
+            Range("b1").Select
+            ActiveCell.FormulaR1C1 = "gatilho"
+            Range("c1").Select
+            ActiveCell.FormulaR1C1 = "tipoPorcentagem"
+            Range("d1").Select
+            ActiveCell.FormulaR1C1 = "valorReceberCashback"
+            Range("e1").Select
+            ActiveCell.FormulaR1C1 = "quantidadeMaximaProduto"
+            Range("f1").Select
+            ActiveCell.FormulaR1C1 = "preco"
+            Range("g1").Select
+            ActiveCell.FormulaR1C1 = "descricao"
+            Range("h1").Select
+            ActiveCell.FormulaR1C1 = "imagem"
+            Range("i1").Select
+            ActiveCell.FormulaR1C1 = "descricaoPackCashback"
+            Range("j1").Select
+            ActiveCell.FormulaR1C1 = "CPF - NOME DO COMPRADOR"
+            Range("k1").Select
+            ActiveCell.FormulaR1C1 = "CÓDIGO - NOME DA INDÚSTRIA"
+            Range("l1").Select
+            ActiveCell.FormulaR1C1 = "INVESTIMENTO TOTAL"
+            Range("m1").Select
+            ActiveCell.FormulaR1C1 = "PERÍODO"
+            Range("n1").Select
+            ActiveCell.FormulaR1C1 = "REGIONAL/LOJAS"
+            Range("o1").Select
+            ActiveCell.FormulaR1C1 = "NOME CAMPANHA"
+            Range("p1").Select
+        
+'Começo do loop aba a aba
+         
+    For I = 1 To WS_Count + 1
+         
+        Sheets(I).Select
+            Range("c9:c65").Select
+            Selection.Copy
+            Sheets("Planilha1").Select
+            ' cola na próxima em vazio
+            Cells(Rows.Count, "A").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+            
+            Sheets(I).Select
+            Range("e9:e65").Select
+            Application.CutCopyMode = False
+            Selection.Copy
+            Sheets("Planilha1").Select
+            ' cola na próxima em vazio
+            Cells(Rows.Count, "B").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+            
+            Sheets(I).Select
+            Range("f9:f65").Select
+            Application.CutCopyMode = False
+            Selection.Copy
+            Sheets("Planilha1").Select
+            ' cola na próxima em vazio
+            Cells(Rows.Count, "D").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+            
+            Sheets(I).Select
+            Range("g9:g65").Select
+            Application.CutCopyMode = False
+            Selection.Copy
+            Sheets("Planilha1").Select
+            ' cola na próxima em vazio
+            Cells(Rows.Count, "E").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+            
+            Sheets(I).Select
+            Range("d9:d65").Select
+            Application.CutCopyMode = False
+            Selection.Copy
+            Sheets("Planilha1").Select
+            ' cola na próxima em vazio
+            Cells(Rows.Count, "G").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+            
+            Sheets(I).Select
+            Range("j9:j65").Select
+            Selection.Copy
+            Sheets("Planilha1").Select
+            ' cola na próxima em vazio
+            Cells(Rows.Count, "j").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+        
+            Sheets(I).Select
+            Range("k9:k65").Select
+            Application.CutCopyMode = False
+            Selection.Copy
+            Sheets("Planilha1").Select
+            ' cola na próxima em vazio
+            Cells(Rows.Count, "k").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+            
+            Sheets(I).Select
+            Range("l9:l65").Select
+            Application.CutCopyMode = False
+            Selection.Copy
+            Sheets("Planilha1").Select
+            ' cola na próxima em vazio
+            Cells(Rows.Count, "l").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+        
+            Sheets(I).Select
+            Range("m9:m65").Select
+            Application.CutCopyMode = False
+            Selection.Copy
+            Sheets("Planilha1").Select
+            ' cola na próxima em vazio
+            Cells(Rows.Count, "m").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+        
+            Sheets(I).Select
+            Range("n9:n65").Select
+            Application.CutCopyMode = False
+            Selection.Copy
+            Sheets("Planilha1").Select
+            ' cola na próxima em vazio
+            Cells(Rows.Count, "n").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+        
+        
+            Sheets(I).Select
+            Range("o9:o65").Select
+            Application.CutCopyMode = False
+            Selection.Copy
+            Sheets("Planilha1").Select
+            ' cola na próxima em vazio
+            Cells(Rows.Count, "o").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
+            
+            
+    Next I
+        
+      Columns("A:O").Select
+            Columns("A:O").EntireColumn.AutoFit
+            Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+            Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+            With Selection.Borders(xlEdgeLeft)
+                .LineStyle = xlContinuous
+                .ColorIndex = 0
+                .TintAndShade = 0
+                .Weight = xlThin
+            End With
+            With Selection.Borders(xlEdgeTop)
+                .LineStyle = xlContinuous
+                .ColorIndex = 0
+                .TintAndShade = 0
+                .Weight = xlThin
+            End With
+            With Selection.Borders(xlEdgeBottom)
+                .LineStyle = xlContinuous
+                .ColorIndex = 0
+                .TintAndShade = 0
+                .Weight = xlThin
+            End With
+            With Selection.Borders(xlEdgeRight)
+                .LineStyle = xlContinuous
+                .ColorIndex = 0
+                .TintAndShade = 0
+                .Weight = xlThin
+            End With
+            With Selection.Borders(xlInsideVertical)
+                .LineStyle = xlContinuous
+                .ColorIndex = 0
+                .TintAndShade = 0
+                .Weight = xlThin
+            End With
+            With Selection.Borders(xlInsideHorizontal)
+                .LineStyle = xlContinuous
+                .ColorIndex = 0
+                .TintAndShade = 0
+                .Weight = xlThin
+            End With
+            With Selection.Interior
+                .PatternColorIndex = xlAutomatic
+                .ThemeColor = xlThemeColorDark1
+                .TintAndShade = 0
+                .PatternTintAndShade = 0
+            End With
+            Range("A1:O1").Select
+            With Selection.Interior
+                .Pattern = xlSolid
+                .PatternColorIndex = xlAutomatic
+                .ThemeColor = xlThemeColorDark1
+                .TintAndShade = -0.149998474074526
+                .PatternTintAndShade = 0
+            End With
+            Range("A1").Select
+        
+'Completar com não <> ""
+        
+    Dim cell, range3 As Range
+            
+      Set range3 = Range("c2:c300")
+        
+      For Each cell In range3
+            If cell.Offset(0, -2).Value <> "" Then
+                cell.Value = "não"
+            Else
+                cell.Value = ""
+            End If
+        
+      Next
+          
+End Sub
+
+      </textarea>
+      <button id="HTMLButton">Copiar Código</button>
+    </div>
+  </div>
+
+  <br> <br>
+
+  <div class="text-boxes">
+    <div class="text-box HTMLBox">
+      <div class="topic">Código VBA - Congelamento:</div>
+      <textarea id="HTMLBox2" readonly >
 Sub cashback()
 
 Dim WS_Count As Integer
@@ -31,7 +293,7 @@ Dim I As Integer
 'WS_Count conta o numero de Planilhas
 WS_Count = ActiveWorkbook.Worksheets.Count
 
-' Criando aba nova
+'Criando aba nova
 
     Sheets.Add
     ActiveCell.FormulaR1C1 = "CÓD. REDUZIDO"
@@ -185,12 +447,16 @@ WS_Count = ActiveWorkbook.Worksheets.Count
 
 End Sub
       </textarea>
-      <button id="HTMLButton">Copiar Código</button>
+      <button id="HTMLButton2">Copiar Código</button>
     </div>
   </div>
 
+  <br> <br> <br>
+
+
+
   <script>
-  // HTML BOx Code
+  // HTML BOx Code 1
     let HTMLBox = document.getElementById("HTMLBox");
     let HTMLButton = document.getElementById("HTMLButton");
 
@@ -198,6 +464,16 @@ End Sub
       HTMLBox.select();
       document.execCommand("copy");
       HTMLButton.innerText = "Código Copiado"
+    }
+
+    // HTML BOx Code 2
+    let HTMLBox2 = document.getElementById("HTMLBox2");
+    let HTMLButton2 = document.getElementById("HTMLButton2");
+
+    HTMLButton2.onclick = function() {
+      HTMLBox2.select();
+      document.execCommand("copy");
+      HTMLButton2.innerText = "Código Copiado"
     }
   </script>
 

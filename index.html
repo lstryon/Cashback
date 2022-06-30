@@ -442,7 +442,10 @@ WS_Count = ActiveWorkbook.Worksheets.Count
         .PatternTintAndShade = 0
     End With
     Range("D2:E2").Select
-
+    Columns("B:B").Select
+    Selection.NumberFormat = "General"
+    Range("C1").Select
+        
 ' Final classificar
 
 End Sub
@@ -450,11 +453,9 @@ End Sub
       <button id="HTMLButton2">Copiar Código</button>
     </div>
   </div>
-
+      
   <br> <br> <br>
-
-
-
+      
   <script>
   // HTML BOx Code 1
     let HTMLBox = document.getElementById("HTMLBox");

@@ -26,38 +26,6 @@
 Dim valor As String
 Dim cell, range1 As Range
         
-Sub completar()
-        
-  Set range1 = Range("b9:b108")
-        
-    For Each cell In range1
-        
-      If cell.Value <> "" Then
-                valor = Range("b6").Value
-                cell.Offset(0, 8).Value = valor
-                valor = Range("c6").Value
-                cell.Offset(0, 9).Value = valor
-                valor = Range("d6").Value
-                cell.Offset(0, 10).Value = valor
-                valor = Range("e6").Value
-                cell.Offset(0, 11).Value = valor
-                valor = Range("g6").Value
-                cell.Offset(0, 12).Value = valor
-                valor = Range("h6").Value
-                cell.Offset(0, 13).Value = valor
-      Else
-                cell.Offset(0, 8).Value = ""
-                cell.Offset(0, 9).Value = ""
-                cell.Offset(0, 10).Value = ""
-                cell.Offset(0, 11).Value = ""
-                cell.Offset(0, 12).Value = ""
-                cell.Offset(0, 13).Value = ""
-      End If
-        
-    Next
-
-End Sub
-        
 Sub cashbackImportacao()
         
 Dim WS_Count As Integer
@@ -69,7 +37,6 @@ WS_Count = ActiveWorkbook.Worksheets.Count
     For X = 1 To WS_Count
         
         Sheets(X).Select
-        Call completar
         
     Next X
         
@@ -94,18 +61,6 @@ WS_Count = ActiveWorkbook.Worksheets.Count
             Range("i1").Select
             ActiveCell.FormulaR1C1 = "descricaoPackCashback"
             Range("j1").Select
-            ActiveCell.FormulaR1C1 = "CPF - NOME DO COMPRADOR"
-            Range("k1").Select
-            ActiveCell.FormulaR1C1 = "CÓDIGO - NOME DA INDÚSTRIA"
-            Range("l1").Select
-            ActiveCell.FormulaR1C1 = "INVESTIMENTO TOTAL"
-            Range("m1").Select
-            ActiveCell.FormulaR1C1 = "PERÍODO"
-            Range("n1").Select
-            ActiveCell.FormulaR1C1 = "REGIONAL/LOJAS"
-            Range("o1").Select
-            ActiveCell.FormulaR1C1 = "NOME CAMPANHA"
-            Range("p1").Select
         
 'Começo do loop aba a aba
          
@@ -150,59 +105,11 @@ WS_Count = ActiveWorkbook.Worksheets.Count
             ' cola na próxima em vazio
             Cells(Rows.Count, "G").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
             
-            Sheets(I).Select
-            Range("j9:j65").Select
-            Selection.Copy
-            Sheets("Planilha1").Select
-            ' cola na próxima em vazio
-            Cells(Rows.Count, "j").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
-        
-            Sheets(I).Select
-            Range("k9:k65").Select
-            Application.CutCopyMode = False
-            Selection.Copy
-            Sheets("Planilha1").Select
-            ' cola na próxima em vazio
-            Cells(Rows.Count, "k").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
-            
-            Sheets(I).Select
-            Range("l9:l65").Select
-            Application.CutCopyMode = False
-            Selection.Copy
-            Sheets("Planilha1").Select
-            ' cola na próxima em vazio
-            Cells(Rows.Count, "l").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
-        
-            Sheets(I).Select
-            Range("m9:m65").Select
-            Application.CutCopyMode = False
-            Selection.Copy
-            Sheets("Planilha1").Select
-            ' cola na próxima em vazio
-            Cells(Rows.Count, "m").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
-        
-            Sheets(I).Select
-            Range("n9:n65").Select
-            Application.CutCopyMode = False
-            Selection.Copy
-            Sheets("Planilha1").Select
-            ' cola na próxima em vazio
-            Cells(Rows.Count, "n").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
-        
-        
-            Sheets(I).Select
-            Range("o9:o65").Select
-            Application.CutCopyMode = False
-            Selection.Copy
-            Sheets("Planilha1").Select
-            ' cola na próxima em vazio
-            Cells(Rows.Count, "o").End(xlUp).Offset(1, 0).PasteSpecial: Application.CutCopyMode = False
-            
             
     Next I
         
-      Columns("A:O").Select
-            Columns("A:O").EntireColumn.AutoFit
+      Columns("A:I").Select
+            Columns("A:I").EntireColumn.AutoFit
             Selection.Borders(xlDiagonalDown).LineStyle = xlNone
             Selection.Borders(xlDiagonalUp).LineStyle = xlNone
             With Selection.Borders(xlEdgeLeft)
@@ -247,7 +154,7 @@ WS_Count = ActiveWorkbook.Worksheets.Count
                 .TintAndShade = 0
                 .PatternTintAndShade = 0
             End With
-            Range("A1:O1").Select
+            Range("A1:I1").Select
             With Selection.Interior
                 .Pattern = xlSolid
                 .PatternColorIndex = xlAutomatic
@@ -273,6 +180,7 @@ WS_Count = ActiveWorkbook.Worksheets.Count
       Next
           
 End Sub
+
 
       </textarea>
       <button id="HTMLButton">Copiar Código</button>
